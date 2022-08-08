@@ -20,8 +20,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('https://www.agence.com.br') }}">
+                    <img class="h-25 w-15" src="{{ url('https://www.agence.com.br/wp-content/themes/dt-the7/inc/presets/images/agence/agence-2.png')}}">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Projetos</a>    
+                        </li>  
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Administrativo</a>    
+                        </li>  
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Comercial</a>    
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Financeiro</a>    
+                        </li>  
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -72,7 +83,8 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="container py-4">
+            @yield('navtabs')
             @yield('content')
         </main>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/perfomance/consultores', [App\Http\Controllers\CaoUsuarioController::class, 'index']);
+
+Route::get('/perfomance/clientes', [App\Http\Controllers\CaoClienteController::class, 'index']);
