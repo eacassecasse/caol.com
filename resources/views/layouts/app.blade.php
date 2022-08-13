@@ -44,7 +44,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Projetos</a>
                     </li>
@@ -56,9 +56,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Financeiro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/perfomance">Avaliação de Perfomance</a>
                     </li>
                 </ul>
 
