@@ -1,34 +1,38 @@
-
 @php
     $receitas = [];
 @endphp
 
-@foreach ($clientes as $cliente)
+@foreach ($clientesSeleccionados as $cliente)
     @php
         $somaReceita = 0;
     @endphp
 
     @foreach ($receita_liquida as $receita)
-        @if ($receita->cliente === $cliente->no_cliente)
-            @php
-                $somaReceita += $receita->receita_liquida;
-            @endphp
-        @endif
+        @if(count($receita) > 0)
+            @if ($receita[0]->cliente === $cliente[0]->no_cliente)
+                @php
+                    $somaReceita += $receita[0]->receita_liquida;
+                @endphp
+            @endif
+        @endif    
     @endforeach
 
     @php
         array_push($receitas, [
-            'cliente' => $cliente->no_cliente,
+            'cliente' => $cliente[0]->no_cliente,
             'receitaTotal' => $somaReceita]);
     @endphp
 @endforeach
+
+@section('content')
+
 
 <table class="table table-striped my-5">
     <thead>
         <tr>
             <th scope="col">Per&iacute;odo</th>
-            @foreach ($clientes as $cliente)
-                <th scope="col">{{ $cliente->no_cliente }}</th>
+            @foreach ($clientesSeleccionados as $cliente)
+                <th scope="col">{{ $cliente[0]->no_cliente }}</th>
             @endforeach
         </tr>
     </thead>
@@ -36,22 +40,25 @@
 
         @foreach ($receita_liquida as $receita)
             <tr>
-                <td>{{ $meses[$receita->mes_emissao - 1] }}</td>
+                @if (count($receita) > 0) 
+                    <td>{{ $meses[$receita[0]->mes_emissao - 1] ."-" .$receita[0]->ano_emissao }}</td>
+                
 
-                @foreach ($clientes as $cliente)
-                    @if ($receita->cliente === $cliente->no_cliente)
-                        <td>{{ number_format($receita->receita_liquida, 2) }}</td>
-                    @else
-                        <td>0.00</td>
-                    @endif
-                @endforeach
+                    @foreach ($clientesSeleccionados as $cliente)
+                        @if ($receita[0]->cliente === $cliente[0]->no_cliente)
+                            <td>{{ number_format($receita[0]->receita_liquida, 2) }}</td>
+                        @else
+                            <td>0.00</td>
+                        @endif
+                    @endforeach
+                @endif
             </tr>
         @endforeach
         <tr>
             <td><strong class="strong">TOTAL</strong></td>
-            @foreach($clientes as $cliente)
+            @foreach($clientesSeleccionados as $cliente)
                 @foreach($receitas as $receita)
-                    @if($cliente->no_cliente === $receita['cliente'])
+                    @if($cliente[0]->no_cliente === $receita['cliente'])
                         <td>{{ number_format($receita['receitaTotal'], 2) }}</td>
                     @endif
                 @endforeach
@@ -60,3 +67,4 @@
 
     </tbody>
 </table>
+@endsection

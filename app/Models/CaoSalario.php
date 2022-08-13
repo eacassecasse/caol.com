@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class CaoSalario extends Model
 {
-    use HasFactory;
+    //Table Name
+    protected $table = 'cao_salario';
+
+    //Primary Keys
+    protected $primaryKey = 'co_usuario';
+
+    //Timestamps for create and datetimes
+    protected const CREATED_ON = null;
+    protected const UPDATED_ON = 'dt_alteracao';
+
+    public function caousuario() {
+        return $this->belongsTo('App\Models\CaoUsuario');
+    }
+
 }

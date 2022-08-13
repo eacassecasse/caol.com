@@ -24,4 +24,12 @@ class CaoUsuario extends Model
         return $this->hasMany('App\Models\CaoSistema');
     }
 
+    public function salario() {
+        return $this->has('App\Models\CaoSalario');
+    }
+
+    public function ordensServico() {
+        return $this->has('App\Models\CaoOS');
+    }
+
 }

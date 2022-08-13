@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    Seja bem-vindo {{ \Illuminate\Support\Facades\Auth::user()->name }}!
+                        Inicie uma <a class="link-primary" href="/perfomance">avaliação de perfomance</a>
                 </div>
             </div>
         </div>

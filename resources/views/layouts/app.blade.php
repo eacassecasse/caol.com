@@ -13,15 +13,28 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    @livewireStyles
+
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    @vite(
+        ['resources/sass/app.scss',
+        'resources/js/app.js',
+        'resources/js/custom.js',])
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm py-3">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('https://www.agence.com.br') }}">
-                    <img class="h-25 w-15" src="{{ url('https://www.agence.com.br/wp-content/themes/dt-the7/inc/presets/images/agence/agence-2.png')}}">
+                    <img class="h-25 w-15"
+                        src="{{ url('https://www.agence.com.br/wp-content/themes/dt-the7/inc/presets/images/agence/agence-2.png') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -29,19 +42,22 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Projetos</a>    
-                        </li>  
+                            <a class="nav-link" href="#">Projetos</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Administrativo</a>    
-                        </li>  
+                            <a class="nav-link" href="#">Administrativo</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Comercial</a>    
-                        </li> 
+                            <a class="nav-link" href="#">Comercial</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Financeiro</a>    
-                        </li>  
+                            <a class="nav-link" href="#">Financeiro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/perfomance">Avaliação de Perfomance</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,10 +99,21 @@
             </div>
         </nav>
 
-        <main class="container py-4">
-            @yield('navtabs')
-            @yield('content')
+        <main class="py-4">
+           <div class="container">
+                @yield('forms')
+                @yield('content')
+           </div>
         </main>
     </div>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<!-- Chart Js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+@stack('footer-scripts')
+@livewireScripts
 </html>

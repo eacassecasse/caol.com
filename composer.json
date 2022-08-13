@@ -6,12 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "consoletvs/charts": "7.*",
+        "fx3costa/laravelchartjs": "^2.9",
         "guzzlehttp/guzzle": "^7.2",
+        "khill/lavacharts": "3.1.*",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-        "livewire/livewire": "^2.10"
+        "livewire/livewire": "^2.10",
+        "nesbot/carbon": "^2.61",
+        "snapappointments/bootstrap-select": "^1.13"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

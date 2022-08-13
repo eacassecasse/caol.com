@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class CaoCliente extends Model
 {
-    use HasFactory;
+    //Table Name
+    protected $table = 'cao_cliente';
+
+    //Primary Keys
+    protected $primaryKey = 'co_cliente';
+
+    //Timestamps for create and update datetimes
+    public $timestamps = false;
+
+    public function facturas() {
+        return $this->hasMany('App\Models\CaoFactura');
+    }
+
 }

@@ -26,6 +26,18 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/perfomance/consultores', [App\Http\Controllers\CaoUsuarioController::class, 'index']);
+Auth::routes();
 
-Route::get('/perfomance/clientes', [App\Http\Controllers\CaoClienteController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/perfomance', 'CaoUsuarioController@index')->name('perfomance')
+    ->middleware('auth');
+Route::get('/perfomance', 'CaoClienteController@index')->name('perfomance')
+    ->middleware('auth');
+
+Route::get('/perfomance/consultores', [App\Http\Controllers\CaoUsuarioController::class, 'getData'])->name('consultores');
+Route::get('/perfomance/clientes', [App\Http\Controllers\CaoClienteController::class, 'getData'])->name('clientes');
